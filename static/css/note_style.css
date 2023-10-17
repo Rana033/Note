@@ -1,0 +1,169 @@
+* {
+  margin: 10px 30px;
+}
+
+header {
+  padding: 20px;
+  border-bottom: 1px solid #999;
+  font-size: 30px;
+  color: gray;
+}
+
+main {
+  text-align: center;
+  width: 80%;
+  margin: 15px auto;
+  padding: 0 15px;
+}
+
+.inputform {
+  padding: 30px;
+  background-color: rgb(197, 193, 193, 0.4);
+  color: black;
+  text-align: center;
+}
+
+label {
+  display: block;
+  font-size: 22px;
+}
+
+.userIn {
+  margin: 30px auto;
+}
+
+input {
+  width: 70%;
+  height: 25px;
+  border-radius: 8px;
+  border: none;
+}
+
+div #add {
+  background-image: linear-gradient(
+    to right,
+    rgb(177, 203, 48),
+    rgb(223, 136, 35)
+  );
+  opacity: 0.8;
+
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+}
+
+#add:hover {
+  background-image: linear-gradient(
+    to left,
+    rgb(177, 203, 48),
+    rgb(223, 136, 35)
+  );
+  opacity: 1;
+}
+
+footer {
+  font-size: 18px;
+  color: gray;
+  opacity: 0.8;
+  padding: 30px;
+  border-top: 1px solid #999;
+  font-size: 14px;
+}
+
+.visitbtn {
+  background-color: rgb(177, 203, 48);
+  width: 120px;
+  height: 30px;
+  border: none;
+  border-radius: 12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+i {
+  color: red;
+}
+
+#result {
+  background-image: linear-gradient(rgb(197, 193, 193, 0.4), whitesmoke);
+}
+
+.error {
+  border: 1px solid red;
+  background-color: rgb(243, 138, 138);
+  display: none;
+}
+.listnote {
+  margin-bottom: 15px;
+  background-color: #f0f0f0;
+}
+.notes.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.listnote {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.listnote .row {
+  display: flex; /* Display children in a single line */
+  justify-content: space-between; /* Space out the elements within the row */
+}
+
+.listnote h2 {
+  font-size: 20px;
+  margin-right: 10px; /* Add space between h2 and p */
+}
+
+.listnote p {
+  font-size: 16px;
+  margin-right: 10px; /* Add space between p and buttons */
+}
+
+.listnote .update,
+.listnote .delete,
+.save {
+  background-color: #28a745; /* Green for the Update button */
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.delete.btn-danger {
+  background-color: #dc3545; /* Red for the Delete button */
+}
+
+/* Remove list decoration */
+.notes {
+  list-style-type: none;
+  padding: 0;
+}
+
+.alert {
+  padding: 15px;
+  background-color: #f63827;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}

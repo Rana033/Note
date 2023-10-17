@@ -1,0 +1,127 @@
+{% block head %}
+<meta charset="UTF-8" />
+<meta name="keywords" content="Note" />
+<meta
+  name="description"
+  content="it's a free bookmarker for your favorite sites"
+/>
+<meta name="author" content="Rana Gaber Badr" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Notes</title>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/note_style.css')}}"
+/>
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+
+{% endblock %} {% block body %} {% with messages =
+get_flashed_messages(with_categories=true) %} {% if messages %} {% for category,
+message in messages %} {% if category == 'error' %}
+
+<div class="alert">
+  {{ message }}
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"
+    >&times;</span
+  >
+</div>
+
+{% endif %} {% endfor %} {% endif %} {% endwith %}
+
+<header>
+  <h1>TODO LIST</h1>
+</header>
+
+<main>
+  <div class="inputform">
+    <h1>Add Items</h1>
+    <form class="form" method="POST" action="/">
+      <div class="userIn">
+        <label for="task">Task</label>
+        <input type="text" name="task" id="task" placeholder="  Task.." />
+      </div>
+
+      <div class="userIn">
+        <label for="notedesc">content</label>
+        <input
+          type="text"
+          name="desc"
+          id="notedesc"
+          placeholder="  note description.. "
+        />
+      </div>
+
+      <div id="submit">
+        <input type="submit" value="Add Note" name="add" id="add" />
+      </div>
+    </form>
+
+    <div id="result">
+      <h1>Tasks</h1>
+      <ul class="notes">
+        {% for item in notes %}
+        <form
+          method="POST"
+          action="{{ url_for('main.delete', index=item['id']) }}"
+        >
+          <li class="listnote grid">
+            <div class="row">
+              <div class="col-md-6">
+                <h2>{{ item['task'] }}</h2>
+                <p>{{ item['desc'] }}</p>
+              </div>
+              <div class="col-md-3">
+                <button
+                  type="button"
+                  class="update btn btn-primary"
+                  onclick="showUpdateForm('{{ item.id}}')"
+                >
+                  Update
+                </button>
+              </div>
+              <div class="col-md-3">
+                <button type="submit" class="delete btn btn-danger">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </li>
+        </form>
+        <form
+          class="form"
+          method="POST"
+          action="{{ url_for('main.update', index=item['id']) }}"
+          style="display: none"
+          id="update-form-{{ item['id'] }}"
+        >
+          <li class="listnote grid">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" name="new_task" placeholder="New Task" />
+                <input
+                  type="text"
+                  name="new_desc"
+                  placeholder="New Description"
+                />
+              </div>
+              <div class="col-md-3">
+                <button type="submit" class="save btn btn-success">
+                  Save Update
+                </button>
+              </div>
+            </div>
+          </li>
+        </form>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</main>
+{% block footer %}
+<p>&copy; 2023 Todo list Inc.</p>
+{% endblock %}
+<script src="{{url_for('static', filename='js/note.js')}}"></script>
+{% endblock %}
